@@ -3,6 +3,7 @@
   "name": "echo",
   "version": "1.0.0",
   "dependencies": {
-    "aws-sdk": "~2"
+    "aws-sdk": "~2",
+    "twit": "^2.2.10"
   }
 }
