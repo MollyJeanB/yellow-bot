@@ -50,7 +50,7 @@ function tweetPoem() {
       console.log('Success: ' + data.text);
       //console.log(response);
     }
-  };
+  }
 
 
 }
