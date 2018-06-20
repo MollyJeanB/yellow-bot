@@ -1,7 +1,9 @@
+//require in the twit package
 const Twit = require('twit')
 
 module.exports = async message => {
 
+//objecting referencing your credentials that allows the bot to tweet to your account
   const T = new Twit({
   consumer_key:         process.env.CONSUMER_KEY,
   consumer_secret:      process.env.CONSUMER_SECRET,
@@ -9,10 +11,12 @@ module.exports = async message => {
   access_token_secret:  process.env.ACCESS_TOKEN_SECRET
 });
 
+//calls the function that generates and posts tweets
 tweetPoem()
 
 function tweetPoem() {
 
+//in this example, the bot is going to tweet random lines from the Anne Sexton poem "Yellow." In order to prevent the bot from tweeting too many repeats (which can cause it to get flagged by Twitter), we are going to compose tweets by combining phrases from two arrays.
   const greetings = [
     `The poet said, `,
     `The poet wrote, `,
@@ -38,8 +42,10 @@ function tweetPoem() {
   `"we'll go on / won't we?"`
   ]
 
+//generate tweets by concatenating a random string from the greeting array and a random string from the lines array
   let tweet = greetings[Math.floor(greetings.length * Math.random())] + lines[Math.floor(lines.length * Math.random())]
-
+  
+//Post the tweet
   T.post('statuses/update', { status: tweet }, tweeted);
 
   // Callback for when the tweet is sent
@@ -48,14 +54,13 @@ function tweetPoem() {
       console.log(err);
     } else {
       console.log('Success: ' + data.text);
-      //console.log(response);
     }
   }
 
 
 }
-
+//we don't need our lambda to return anything
   return {
 
-  };
+  }
 }
