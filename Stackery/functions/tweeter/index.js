@@ -3,7 +3,7 @@ const Twit = require('twit')
 
 module.exports = async message => {
 
-//objecting referencing your credentials that allows the bot to tweet to your account
+//object referencing your credentials that allows the bot to tweet to your account
   const T = new Twit({
   consumer_key:         process.env.CONSUMER_KEY,
   consumer_secret:      process.env.CONSUMER_SECRET,
@@ -44,7 +44,7 @@ function tweetPoem() {
 
 //generate tweets by concatenating a random string from the greeting array and a random string from the lines array
   let tweet = greetings[Math.floor(greetings.length * Math.random())] + lines[Math.floor(lines.length * Math.random())]
-  
+
 //Post the tweet
   T.post('statuses/update', { status: tweet }, tweeted);
 
