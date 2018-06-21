@@ -41,9 +41,18 @@ function tweetPoem() {
   `"no plague / in the sky and there will be a mother-broth / for all of the people and we will / never die, not one of us,"`,
   `"we'll go on / won't we?"`
   ]
+  
+  const emojis = [
+      "✨",
+      "🌟",
+      "💛",
+      "🌞",
+      "🌻",
+      "💫"
+      ]
 
 //generate tweets by concatenating a random string from the greeting array and a random string from the lines array
-  let tweet = greetings[Math.floor(greetings.length * Math.random())] + lines[Math.floor(lines.length * Math.random())]
+  let tweet = greetings[Math.floor(greetings.length * Math.random())] + lines[Math.floor(lines.length * Math.random())] + emojis[Math.floor(emojis.length * Math.random())]
 
 //Post the tweet
   T.post('statuses/update', { status: tweet }, tweeted);
